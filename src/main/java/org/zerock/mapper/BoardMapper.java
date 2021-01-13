@@ -30,5 +30,17 @@ public interface BoardMapper {
 	public void insertSelectKey(BoardVO board);
 	// 1. seq_board의 nextval을 먼저 조회(select)
 	// 2. 조회된 nextval을 insert에서 사용
+	
+	
+	public BoardVO read(Long bno);
+	
+	public int delete(Long bno);
+	
+	public int update(BoardVO board);
 }
+
+
+
+
+
 
