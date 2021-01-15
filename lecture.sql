@@ -37,4 +37,4 @@ INSERT INTO tbl_comment (cno, bno, content, writer) VALUES (seq_comment.nextval,
 COMMIT;
 
 SELECT * FROM tbl_comment;
-SELECT * FROM tbl_board;
+SELECT * FROM tbl_board;    
