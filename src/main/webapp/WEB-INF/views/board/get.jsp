@@ -25,32 +25,48 @@
 	<div class="container-sm">
 		<div class="row">
 			<div class="col-12 col-sm-6 offset-sm-3">
-				<h1>게시물 작성</h1>
+				<h1>게시물 보기</h1>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-12 col-sm-6 offset-sm-3">
 
-				<form method="post"<%-- action="${pageContext.request.contextPath }/board/register" --%>
-		>
 					<div class="form-group">
-						<label for="input1">제목</label> <input name="title" type="text"
-							class="form-control" id="input1" placeholder="제목을 입력하세요.">
+						<label for="input3">번호</label>
+						<input class="form-control" type="text" id="input3" readonly value="${board.bno }" />
+					</div>
+					
+					<div class="form-group">
+						<label for="input1">제목</label> <input readonly value='<c:out value="${board.title }" />' type="text"
+							class="form-control" id="input1" >
 					</div>
 
 					<div class="form-group">
 						<label for="textarea1">내용</label>
-						<textarea name="content" class="form-control" id="textarea1"
-							rows="3"></textarea>
+						<textarea readonly class="form-control" id="textarea1"
+							rows="3"><c:out value="${board.content }" /></textarea>
 					</div>
 
 					<div class="form-group">
-						<label for="input2">작성자</label> <input name="writer" type="text"
-							class="form-control" id="input2" placeholder="이름을 입력하세요.">
+						<label for="input2">작성자</label> <input readonly 
+						    value='<c:out value="${board.writer }" />' type="text"
+							class="form-control" id="input2" >
 					</div>
 
-					<button type="submit" class="btn btn-primary">Submit</button>
-				</form>
+					<!--
+					"수정" -> 수정, 삭제
+					책:  254page 위쪽 코드
+					수정 button 요소를 만들고
+					button을 눌렀을 때 이동하는 js 작성 -->
+					
+					<!--
+					우리:
+					a요소로 만듬 
+					 -->
+					<a href="${root }/board/modify?bno=${board.bno}" class="btn btn-secondary">
+						수정
+					</a>
+					
 			</div>
 		</div>
 	</div>

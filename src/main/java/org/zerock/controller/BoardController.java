@@ -47,7 +47,6 @@ public class BoardController {
 		
 	}
 	
-	
 //	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	@PostMapping("/register")
 	public String register(BoardVO board, RedirectAttributes rttr) {
@@ -63,11 +62,12 @@ public class BoardController {
 		
 		rttr.addFlashAttribute("result", board.getBno());
 		
+//		return "board/list";
 		return "redirect:/board/list";
 	}
 	
 	// 표: /board/read, 코드: /board/get
-	@GetMapping("/get")
+	@GetMapping({"/get", "/modify"})
 	public void get(@RequestParam("bno") Long bno, Model model) {
 		/** 예전 코드 (스프링 없이) 
 		String boardNum = request.getParameter("num");
@@ -84,6 +84,14 @@ public class BoardController {
 		BoardVO vo = service.get(bno);
 		model.addAttribute("board", vo);
 	}
+	
+	/*
+	@GetMapping("/modify")
+	public void modify(Long bno, Model model) {
+		BoardVO vo = service.get(bno);
+		model.addAttribute("board", vo);
+	}
+	*/
 	
 	@PostMapping("/modify")
 	public String modify(BoardVO board, RedirectAttributes rttr) {
@@ -129,6 +137,8 @@ public class BoardController {
 		
 		return "redirect:/board/list";
 	}
+	
+	
 }
 
 // servlet/jsp
