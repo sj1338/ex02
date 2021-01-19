@@ -1,4 +1,5 @@
 CREATE SEQUENCE seq_board;
+DROP SEQUENCE seq_board;
 
 CREATE TABLE tbl_board (
     bno NUMBER(10, 0),
@@ -15,9 +16,12 @@ PRIMARY KEY (bno);
 INSERT INTO tbl_board (bno, title, content, writer)
 VALUES (seq_board.nextval, '테스트 제목', '테스트 내용', 'user00');
 
+DROP TABLE tbl_board;
+
 commit;
 
 CREATE SEQUENCE seq_comment;
+DROP SEQUENCE seq_comment;
 
 CREATE TABLE tbl_comment (
     cno NUMBER(10, 0), 
@@ -37,4 +41,10 @@ INSERT INTO tbl_comment (cno, bno, content, writer) VALUES (seq_comment.nextval,
 COMMIT;
 
 SELECT * FROM tbl_comment;
-SELECT * FROM tbl_board;    
+SELECT * FROM tbl_board;
+
+SELECT bno, title, content, writer, regdate, updatedate FROM
+(SELECT ROW_NUMBER() OVER (ORDER BY bno DESC) rn, bno, title, content, writer, regdate, updatedate FROM tbl_board)
+WHERE rn BETWEEN ? and ?;
+
+

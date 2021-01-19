@@ -4,39 +4,36 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.zerock.domain.CommentVO;
-import org.zerock.mapper.CommentMapper;
-
-import lombok.AllArgsConstructor;
 
 @Service
-@AllArgsConstructor
-public class CommentServiceImpl implements CommentService {
-	
-	private CommentMapper mapper;
-	
+public class CommentServiceImple2 implements CommentService {
 
 	@Override
 	public void register(CommentVO comment) {
-		mapper.insertSelectKey(comment);
+		
 	}
 	
 	@Override
 	public List<CommentVO> getList() {
-		return mapper.getList();
-	}
-	
-	@Override
-	public CommentVO get(Long cno) {
-		return mapper.read(cno);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
+	public CommentVO get(Long cno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
 	public boolean remove(Long cno) {
-		return mapper.delete(cno) == 1;
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	@Override
 	public boolean modify(CommentVO comment) {
-		return mapper.update(comment) == 1;
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

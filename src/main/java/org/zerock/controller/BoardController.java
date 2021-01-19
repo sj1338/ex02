@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
+import org.zerock.domain.PageDTO;
 import org.zerock.service.BoardService;
 
 import lombok.AllArgsConstructor;
@@ -30,6 +32,7 @@ public class BoardController {
 	}
 	*/
 
+	/*
 	// 211 page 표
 //	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@GetMapping("/list") 
@@ -40,6 +43,19 @@ public class BoardController {
 		log.info("******************** list *******************");
 		List<BoardVO> list = service.getList();
 		model.addAttribute("list", list);
+	}
+	*/
+	
+	@GetMapping("/list")
+	public void list(Criteria cri, Model model) {
+		List<BoardVO> list = service.getList(cri);
+		
+		int total = service.getTotal(cri);
+		
+		PageDTO dto = new PageDTO(cri, total);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("pageMaker", dto);
 	}
 	
 	@GetMapping("/register")
@@ -61,6 +77,7 @@ public class BoardController {
 		service.register(board);
 		
 		rttr.addFlashAttribute("result", board.getBno());
+		rttr.addFlashAttribute("message", board.getBno() + "번 글이 등록되었습니다.");
 		
 //		return "board/list";
 		return "redirect:/board/list";
@@ -104,6 +121,7 @@ public class BoardController {
 		
 		if (service.modify(board)) {
 			rttr.addFlashAttribute("result", "success");
+			rttr.addFlashAttribute("message", board.getBno() + "번 글이 수정되었습니다.");
 		}
 		
 		return "redirect:/board/list";
@@ -133,6 +151,7 @@ public class BoardController {
 		
 		if (service.remove(bno)) {
 			rttr.addFlashAttribute("result", "success");
+			rttr.addFlashAttribute("message", bno + "번 글이 삭제되었습니다.");
 		}
 		
 		return "redirect:/board/list";

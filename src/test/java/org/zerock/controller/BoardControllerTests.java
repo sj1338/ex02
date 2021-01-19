@@ -19,6 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.FlashMap;
 import org.springframework.web.servlet.ModelAndView;
@@ -111,6 +112,8 @@ public class BoardControllerTests {
 		String viewName = result.getModelAndView().getViewName();
 		Map<String, Object> modelMap = result.getModelAndView().getModel();
 		
+		log.info("모델맵" + modelMap);
+		
 		assertEquals("board/get", viewName);
 		assertNotNull(modelMap.get("board"));
 		assertEquals(new Long(1), ((BoardVO) modelMap.get("board")).getBno());
@@ -171,6 +174,21 @@ public class BoardControllerTests {
 		
 		assertEquals("success", result.getFlashMap().get("result"));
 	}
+	
+	@Test
+	public void testListPaging() throws Exception {
+		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/board/list")
+											.param("pageNum", "2")
+											.param("amount", "10"))
+									.andReturn();
+		
+		Map<String, Object> model = result.getModelAndView().getModel();
+		List list = (List) model.get("list");
+		
+		assertEquals(10, list.size());
+	}
 }
+
+
 
 
