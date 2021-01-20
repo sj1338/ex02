@@ -65,6 +65,8 @@ $(document).ready(function() {
 							class="form-control" readonly value='<c:out value="${board.writer }" />' id="input2" placeholder="이름을 입력하세요.">
 					</div>
 
+					<input type="hidden" value="${cri.pageNum }" name="pageNum" />
+					<input type="hidden" value="${cri.amount }" name="amount" />
 					<button type="submit" class="btn btn-primary">수정</button>
 					<button id="remove-btn" type="submit" class="btn btn-danger">삭제</button>
 				</form>

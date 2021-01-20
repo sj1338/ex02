@@ -21,9 +21,3 @@ public class Criteria {
 		this.amount = amount;
 	}
 }
-
-
-
-
-
-
