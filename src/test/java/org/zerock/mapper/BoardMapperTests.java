@@ -143,7 +143,7 @@ public class BoardMapperTests {
 		cri = new Criteria(2, 5);
 		list = mapper.getListWithPaging(cri);
 		
-		list.forEach(board -> log.info("번호 : " + board.getBno()));
+		list.forEach(board -> log.info("번호:" + board.getBno()));
 	}
 }
 

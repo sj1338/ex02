@@ -43,6 +43,7 @@ COMMIT;
 SELECT * FROM tbl_comment;
 SELECT * FROM tbl_board;
 
+
 SELECT bno, title, content, writer, regdate, updatedate FROM
 (SELECT ROW_NUMBER() OVER (ORDER BY bno DESC) rn, bno, title, content, writer, regdate, updatedate FROM tbl_board)
 WHERE rn BETWEEN ? and ?;

@@ -52,20 +52,21 @@ public class CommentMapperTests {
 	}
 	
 	
-	
-	 @Test public void testInsertSelectKey() { CommentVO comment = new
-	 CommentVO(); comment.setBno(1L); comment.setContent("new comment");
-	 comment.setWriter("newbie");
-	 
-	 int before = mapper.getList().size();
-	  
-	 mapper.insertSelectKey(comment);
-	  
-	 int after = mapper.getList().size();
-	 
-	 assertEquals(before + 1, after); }
-	 
-	
+	@Test
+	public void testInsertSelectKey() {
+		CommentVO comment = new CommentVO();
+		comment.setBno(1L);
+		comment.setContent("new comment");
+		comment.setWriter("newbie");
+		
+		int before = mapper.getList().size();
+		
+		mapper.insertSelectKey(comment);
+		
+		int after = mapper.getList().size();
+		
+		assertEquals(before + 1, after);
+	}
 	
 	@Test
 	public void testRead() {
@@ -85,45 +86,47 @@ public class CommentMapperTests {
 	public void testDelete() {
 		CommentVO comment = new CommentVO();
 		comment.setBno(1L);
-		comment.setContent("새로 작성하는 내용");
+		comment.setContent("new comment");
 		comment.setWriter("newbie");
 		
 		mapper.insertSelectKey(comment);
-		
 		
 		int before = mapper.getList().size();
 		
 		int cnt = mapper.delete(comment.getCno());
 		
-		assertEquals(1, cnt);
-		
 		int after = mapper.getList().size();
 		
-		assertEquals(before-1, after);
-		
-		
+		assertEquals(cnt, 1);
+		assertEquals(before - 1, after);
 	}
 	
 	@Test
 	public void testUpdate() {
 		CommentVO comment = new CommentVO();
 		comment.setBno(1L);
-		comment.setContent("새로 작성하는 내용");
+		comment.setContent("new comment");
 		comment.setWriter("newbie");
 		
 		mapper.insertSelectKey(comment);
 		
-		comment.setContent("변경된 내용");
+		comment.setContent("other comment");
+		
 		int cnt = mapper.update(comment);
 		
-		assertEquals(1, cnt);
+		assertEquals(cnt, 1);
 		
-		CommentVO updateVO = mapper.read(comment.getCno());
-		assertEquals("변경된 내용", updateVO.getContent());
+		CommentVO com = mapper.read(comment.getCno());
 		
+		assertEquals("other comment", com.getContent());
 	}
-
 }
+
+
+
+
+
+
 
 
 
