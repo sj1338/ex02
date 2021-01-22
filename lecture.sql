@@ -49,3 +49,6 @@ SELECT bno, title, content, writer, regdate, updatedate FROM
 WHERE rn BETWEEN ? and ?;
 
 
+상품 이럼, 번호ㅡ 이미지 경로
+
+
