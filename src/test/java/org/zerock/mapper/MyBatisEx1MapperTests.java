@@ -29,7 +29,6 @@ public class MyBatisEx1MapperTests {
 	public void testExist() {
 		assertNotNull(mapper);
 	}
-
 	
 	@Test
 	public void testSelect1() {

@@ -26,6 +26,42 @@ public class BoardMapperTests {
 	private BoardMapper mapper;
 	
 	@Test
+	public void testSearch1() {
+		Criteria cri = new Criteria();
+		cri.setType("T");
+		cri.setKeyword("테스트");
+		
+		mapper.getListWithPaging(cri);
+	}
+	
+	@Test
+	public void testSearch2() {
+		Criteria cri = new Criteria();
+		cri.setType("C");
+		cri.setKeyword("테스트");
+		
+		mapper.getListWithPaging(cri);
+	}
+	
+	@Test
+	public void testSearch3() {
+		Criteria cri = new Criteria();
+		cri.setType("W");
+		cri.setKeyword("테스트");
+		
+		mapper.getListWithPaging(cri);
+	}
+	
+	@Test
+	public void testSearch4() {
+		Criteria cri = new Criteria();
+		cri.setType("TWC");
+		cri.setKeyword("테스트");
+		
+		mapper.getListWithPaging(cri);
+	}
+	
+	@Test
 	public void testGetList() {
 		List<BoardVO> list = mapper.getList();
 		
@@ -145,6 +181,8 @@ public class BoardMapperTests {
 		
 		list.forEach(board -> log.info("번호:" + board.getBno()));
 	}
+	
+
 }
 
 
