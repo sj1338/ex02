@@ -40,7 +40,7 @@ public class ReplyController {
 		log.info("count: " + insertCount);
 		
 		if (insertCount == 1) {
-			return new ResponseEntity<> ("success", HttpStatus.OK);
+			return new ResponseEntity<> ("success999", HttpStatus.OK);
 		} else {
 			return new ResponseEntity<> (HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -55,6 +55,8 @@ public class ReplyController {
 		Criteria cri = new Criteria(page, 10);
 		
 		List<ReplyVO> list = service.getList(cri, bno);
+
+		log.info(list);
 		
 		return new ResponseEntity<List<ReplyVO>> (list, HttpStatus.OK);
 	}
@@ -64,7 +66,13 @@ public class ReplyController {
 	public ResponseEntity<ReplyVO> get(@PathVariable("rno") Long rno) {
 		ReplyVO vo = service.get(rno);
 		
-		return new ResponseEntity<ReplyVO>(vo, HttpStatus.OK);
+		log.info(vo);
+		
+		if(vo != null) {
+			return new ResponseEntity<>(vo, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}	
 	}
 	
 	@DeleteMapping(value = "/{rno}", produces = MediaType.TEXT_PLAIN_VALUE)
@@ -72,6 +80,8 @@ public class ReplyController {
 			@PathVariable("rno") Long rno) {
 		
 		int cnt = service.remove(rno);
+		
+		log.info(cnt);
 		
 		if (cnt == 1) {
 			return new ResponseEntity<>("success", HttpStatus.OK);
@@ -92,6 +102,8 @@ public class ReplyController {
 		
 		int cnt = service.modify(vo);
 		
+		log.info(cnt);
+		
 		if (cnt == 1) {
 			return new ResponseEntity<String>("success", HttpStatus.OK);
 		} else {
@@ -99,8 +111,6 @@ public class ReplyController {
 		}
 		
 	}
-	
-	
 }
 
 

@@ -36,7 +36,7 @@ ALTER TABLE tbl_comment ADD updatedate DATE DEFAULT SYSDATE;
 
 DROP TABLE tbl_comment;
 
-INSERT INTO tbl_comment (cno, bno, content, writer) VALUES (seq_comment.nextval, 1, 'first comment', 'newbie');
+INSERT INTO tbl_comment (cno, bno, content, writer) VALUES (seq_comment.nextval, 130, 'first comment', 'newbie');
 
 COMMIT;
 
@@ -67,11 +67,12 @@ ALTER TABLE tbl_reply ADD CONSTRAINT pk_reply PRIMARY KEY(rno);
 
 ALTER TABLE tbl_reply ADD CONSTRAINT fk_reply_board FOREIGN KEY (bno) REFERENCES tbl_board(bno);
 
-SELECT * FROM tbl_reply ORDER BY bno DESC;;
+
 
 SELECT * FROM tbl_board ORDER BY bno DESC;
+SELECT * FROM tbl_reply ORDER BY bno DESC; 
 
-
+commit;
 
 
 
