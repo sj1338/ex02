@@ -76,6 +76,7 @@ $(document).ready(function() {
 				console.log("complete");
 				console.log(status);
 				console.log(jqXHR);
+				
 			}
 		});
 	});
