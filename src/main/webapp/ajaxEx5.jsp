@@ -20,9 +20,8 @@
 <script>
 $(document).ready(function() {
 	$("#btn-1").click(function() {
-		$.ajax({
+		$.ajax("/controller/replies/new", {
 			type: "post",
-			url: "/controller/replies/new",
 			contentType: "application/json",
 			data: '{"bno":241,"reply":"새 댓글~","replyer":"user01"}',
 			complete: function(jqXHR, status) {
@@ -32,9 +31,8 @@ $(document).ready(function() {
 		});
 	});
 	$("#btn-2").click(function() {
-		$.ajax({
+		$.ajax("/controller/replies/new",{
 			type: "post",
-			url: "/controller/replies/new",
 			contentType: "application/json",
 			data: '{"reply":"새 댓글~","replyer":"user01"}',
 			complete: function(jqXHR, status) {
@@ -49,57 +47,46 @@ $(document).ready(function() {
 			type: "post",
 			url: "/controller/replies/new",
 			contentType: "application/json",
-			data: '{"bno":241,"reply":"새 댓글~","replyer":"user01"}',
-			complete: function(jqXHR, status) {
-				if (status === "success") {
-					console.log("등록 성공");
-					console.log(jqXHR.responseText);
-				} else if (status === "error") {
-					console.log("등록 실패");
-				}
-			}
+			data: '{"bno":250,"reply":"새 댓글~","replyer":"user01"}'
+		}).done(function(data, status, xhr) {
+			console.log("등록 성공");
+			// console.log(jqXHR.responseText);
+			console.log(data);
+		}).fail(function() {
+			console.log("등록 실패");
 		});
 	});
 	
 	$("#btn-4").click(function() {
 		$.ajax({
 			url: "/controller/replies/pages/241/1",
-			type: "get",
-			complete: function(jqXHR, status) {
-				if (status === "success") {
-					console.log(jqXHR.responseText);
-				}
-			}
+			type: "get"
+		}).done(function(data) {
+			console.log(data);
 		});
 	});
 	
 	$("#btn-5").click(function() {
 		$.ajax({
 			method: "put",
-			url: "/controller/replies/9",
-			data: '{"bno":241,"reply":"수정된 댓글!!!"}',
-			contentType: "application/json",
-			complete: function(xhr, status) {
-				if (status === "success") {
-					console.log("수정 완료");
-				} else if (status === "error") {
-					console.log("수정 실패");
-				}
-			}
+			url: "/controller/replies/11",
+			data: '{"reply":"수정된 댓글!!!"}',
+			contentType: "application/json"
+		}).done(function() {
+			console.log("수정 완료");
+		}).fail(function() {
+			console.log("수정 실패");
 		});
 	});
 	
 	$("#btn-6").click(function() {
 		$.ajax({
 			method: "delete",
-			url: "/controller/replies/9",
-			complete: function(xhr, status) {
-				if (status === "success") {
-					console.log("삭제 완료");
-				} else if (status === "error") {
-					console.log("삭제 실패");
-				}
-			}
+			url: "/controller/replies/11"
+		}).fail(function() {
+			console.log("삭제 실패");
+		}).done(function() {
+			console.log("삭제 완료");
 		});
 	});
 });
@@ -107,7 +94,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<h1>AJAX ex 2</h1>
+<h1>AJAX ex 5</h1>
 <div>
 <button id="btn-1">댓글 등록 성공</button>
 </div>

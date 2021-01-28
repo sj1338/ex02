@@ -22,41 +22,30 @@ $(document).ready(function() {
 	$("#btn-1").click(function() {
 		$.ajax({
 			method: "POST",
-			url: "/replies/new",
-			data: '{"bno":133,"reply":"new reply","replyer":"user00"}',
-			contentType: "application/json",
-			complete: function(jqXHR, status) {
-				if(status == "success") {
-					console.log("등록 성공");
-					console.log(jqXHR.responseText);
-				} else if (status == "error") {
-					console.log("등록 실패");
-				}
-				console.log("complete");
-				console.log(status);
-				console.log(jqXHR);
-			}
+			url: "/controller/replies/new",
+			data: '{"bno":241,"reply":"new reply","replyer":"user00"}',
+			contentType: "application/json"
 		});
 	});
 	
 	$("#btn-2").click(function() {
 		$.ajax({
 			method: "GET",
-			url: "/replies/pages/133/1"
+			url: "/controller/replies/pages/241/1"
 		});
 	});
 	
 	$("#btn-3").click(function() {
 		$.ajax({
 			method: "delete",
-			url: "/replies/4"
+			url: "/controller/replies/4"
 		});
 	});
 	
 	$("#btn-4").click(function() {
 		$.ajax({
 			method: "put",
-			url: "/replies/9",
+			url: "/controller/replies/9",
 			contentType: "application/json",
 			data: '{"bno":241,"reply":"new reply999","replyer":"user00"}'
 		});
@@ -65,19 +54,7 @@ $(document).ready(function() {
 	$("#btn-5").click(function() {
 		$.ajax({
 			type: "get",
-			url: "/replies/55",
-			complete: function(jqXHR, status) {
-				if(status == "success") {
-					console.log("가져오기 성공");
-					console.log(jqXHR.responseText);
-				} else if (status == "error") {
-					console.log("가져오기 실패");
-				}
-				console.log("complete");
-				console.log(status);
-				console.log(jqXHR);
-				
-			}
+			url: "/controller/replies/9"
 		});
 	});
 });

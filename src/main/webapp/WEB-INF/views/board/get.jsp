@@ -16,6 +16,48 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="${root }/resources/js/reply.js"></script>
+
+<script>
+// console.log(replyService.name);
+// replyService.add("my reply");
+/*
+replyService.add({
+		bno:241, 
+		reply:"new reply 댓글", 
+		replyer:"tester"
+	}, function(result) {
+		console.log(result);
+	}, function(err) {
+		console.log(err);
+	});
+*/
+replyService.getList(
+		{bno:241, page:1},
+		function(data) {
+			console.log(data);	
+		},
+		function() {
+			console.log("error");
+		});
+/*
+replyService.remove(14, function(data) {
+	console.log(data);
+}, function(err) {
+	console.log(err);
+})
+*/
+
+/*
+replyService.update({rno:21, reply:'또 수정된 본문'},
+		function(data) {
+			console.log(data);
+		}, function(err) {
+			console.log(err);
+		});
+*/		
+
+</script>
 
 <title>Insert title here</title>
 </head>
@@ -72,8 +114,8 @@
 						<c:param name="bno" value="${board.bno }"></c:param>
 						<c:param name="pageNum" value="${cri.pageNum }"></c:param>
 						<c:param name="amount" value="${cri.amount }"></c:param>
-						<c:param name="type" value="${cri.type}"></c:param>
-						<c:param name="keyword" value="${cri.keyword}" ></c:param>
+						<c:param name="type" value="${cri.type }" ></c:param>
+						<c:param name="keyword" value="${cri.keyword }" ></c:param>
 					</c:url>
 					<a href="${modifyLink }" class="btn btn-secondary">
 						수정

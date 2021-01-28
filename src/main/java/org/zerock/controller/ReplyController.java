@@ -40,7 +40,7 @@ public class ReplyController {
 		log.info("count: " + insertCount);
 		
 		if (insertCount == 1) {
-			return new ResponseEntity<> ("success999", HttpStatus.OK);
+			return new ResponseEntity<> ("success9999", HttpStatus.OK);
 		} else {
 			return new ResponseEntity<> (HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -68,11 +68,7 @@ public class ReplyController {
 		
 		log.info(vo);
 		
-		if(vo != null) {
-			return new ResponseEntity<>(vo, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}	
+		return new ResponseEntity<ReplyVO>(vo, HttpStatus.OK);
 	}
 	
 	@DeleteMapping(value = "/{rno}", produces = MediaType.TEXT_PLAIN_VALUE)

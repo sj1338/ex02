@@ -50,13 +50,13 @@ $(document).ready(function() {
 			url: "/controller/replies/new",
 			contentType: "application/json",
 			data: '{"bno":241,"reply":"새 댓글~","replyer":"user01"}',
-			complete: function(jqXHR, status) {
-				if (status === "success") {
-					console.log("등록 성공");
-					console.log(jqXHR.responseText);
-				} else if (status === "error") {
-					console.log("등록 실패");
-				}
+			success: function(data, status, xhr) {
+				console.log("등록 성공");
+				// console.log(jqXHR.responseText);
+				console.log(data);
+			},
+			error: function() {
+				console.log("등록 실패");
 			}
 		});
 	});
@@ -107,7 +107,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<h1>AJAX ex 2</h1>
+<h1>AJAX ex 3</h1>
 <div>
 <button id="btn-1">댓글 등록 성공</button>
 </div>

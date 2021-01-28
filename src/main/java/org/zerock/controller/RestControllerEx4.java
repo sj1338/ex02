@@ -41,17 +41,28 @@ public class RestControllerEx4 {
 		return r;
 	}
 	
-	@RequestMapping(value= "/ex4", produces = MediaType.TEXT_PLAIN_VALUE)
+	@RequestMapping(value="/ex4", produces = MediaType.TEXT_PLAIN_VALUE)
 	public String method4() {
 		log.info("method4");
 		
 		return "hello world";
 	}
 	
-	@RequestMapping(value= "/ex5", produces = "text/plain;charset=UTF-8")
+	@RequestMapping(value="/ex5", produces = "text/plain;charset=UTF-8")
 	public String method5() {
 		log.info("method5");
 		
-		return "으악";
+		return "스프링";
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
