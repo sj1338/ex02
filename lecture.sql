@@ -72,6 +72,8 @@ ALTER TABLE tbl_reply ADD CONSTRAINT fk_reply_board FOREIGN KEY (bno) REFERENCES
 SELECT * FROM tbl_board ORDER BY bno DESC;
 SELECT * FROM tbl_reply ORDER BY bno DESC; 
 
+delete from tbl_reply where rno = 61;
+
 commit;
 
 
