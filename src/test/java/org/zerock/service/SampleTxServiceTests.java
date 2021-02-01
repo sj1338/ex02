@@ -20,7 +20,9 @@ public class SampleTxServiceTests {
 	@Test
 	public void testLong() {
 		
-		String str = "0123456789012345678901234567890123456789";
+		String str = "01234567890123456789012345678901234567890123456789012345678901234567890123456789";
+//		String str = "0123456789";
+	
 		service.addData(str);
 	}
 

@@ -80,8 +80,6 @@
         </tr>
       </thead>
       <tbody>
-      <c:choose>
-      <c:when test="${not empty list}">
         <c:forEach items="${list}" var="board" >
           <tr>
             <td>${board.bno}</td>
@@ -90,12 +88,15 @@
             	<c:param value="${board.bno }" name="bno" />
             	<c:param value="${pageMaker.cri.pageNum }" name="pageNum" />
             	<c:param value="${pageMaker.cri.amount }" name="amount" />
-            	<c:param value="${pageMaker.cri.type }" name= "type" />
-            	<c:param value="${pageMaker.cri.keyword }" name= "keyword" />
+            	<c:param value="${pageMaker.cri.type }" name="type"	/>
+            	<c:param value="${pageMaker.cri.keyword }" name="keyword" />
             </c:url>
             
             <a href="${boardLink }">
 	            <c:out value="${board.title}" />
+	            <c:if test="${board.replyCnt gt 0 }">
+		            <span class="badge badge-info">${board.replyCnt }</span>
+	            </c:if>
             </a>
             
             </td>
@@ -106,13 +107,6 @@
               value="${board.updateDate}" /></td>
           </tr>
         </c:forEach>
-      	</c:when>
-      	<c:otherwise>
-      		<tr>
-      			<td colspan="7" class="txt_center">검색 결과가 없습니다.</td>
-      		</tr>
-      	</c:otherwise>
-        </c:choose>
       </tbody>
     </table>
   </div>
@@ -191,7 +185,7 @@
 		<input name="pageNum" value="${pageMaker.cri.pageNum }" />
 		<input name="amount" value="${pageMaker.cri.amount }"/>
 		<input name="type" value="${pageMaker.cri.type }" />
-		<input name="keyword" value="${pageMaker.cri.keyword }"/>
+		<input name="keyword" value="${pageMaker.cri.keyword }" />
 		<input type="submit" />
 	</form>
 </div>

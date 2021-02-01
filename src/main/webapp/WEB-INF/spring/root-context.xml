@@ -21,6 +21,10 @@
 		<property name="maximumPoolSize" value="2"></property>
 	</bean>
 	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  		<constructor-arg ref="dataSource" />
+	</bean>
+	
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 	      destroy-method="close">
 		<constructor-arg ref="hikariConfig"></constructor-arg>
