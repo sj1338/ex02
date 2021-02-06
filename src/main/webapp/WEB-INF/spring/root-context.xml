@@ -22,7 +22,7 @@
 		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:orcl"></property>
 		<property name="username" value="c##mydbms"></property>
 		<property name="password" value="admin"></property>
-		
+		 
 		<property name="maximumPoolSize" value="2"></property>
 	</bean>
 	
