@@ -22,8 +22,8 @@ $(document).ready(function() {
 	$("#btn-1").click(function() {
 		$.ajax({
 			method: "POST",
-			url: "/controller/replies/new",
-			data: '{"bno":241,"reply":"new reply","replyer":"user00"}',
+			url: "/replies/new",
+			data: '{"bno":45,"reply":"new reply","replyer":"user00"}',
 			contentType: "application/json"
 		});
 	});
@@ -31,21 +31,21 @@ $(document).ready(function() {
 	$("#btn-2").click(function() {
 		$.ajax({
 			method: "GET",
-			url: "/controller/replies/pages/241/1"
+			url: "/replies/pages/241/1"
 		});
 	});
 	
 	$("#btn-3").click(function() {
 		$.ajax({
 			method: "delete",
-			url: "/controller/replies/4"
+			url: "/replies/4"
 		});
 	});
 	
 	$("#btn-4").click(function() {
 		$.ajax({
 			method: "put",
-			url: "/controller/replies/9",
+			url: "/replies/9",
 			contentType: "application/json",
 			data: '{"bno":241,"reply":"new reply999","replyer":"user00"}'
 		});
@@ -54,7 +54,7 @@ $(document).ready(function() {
 	$("#btn-5").click(function() {
 		$.ajax({
 			type: "get",
-			url: "/controller/replies/9"
+			url: "/replies/9"
 		});
 	});
 });
